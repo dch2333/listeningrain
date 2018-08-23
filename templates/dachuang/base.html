@@ -1,0 +1,141 @@
+<!-- base.html -->
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %} {% endblock %}
+    <script src="/static/js/lizi/jquery.js"></script>
+    <script src="/static/js/assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="/static/js/assets/js/jquery.metisMenu.js"></script>
+    <!-- Custom Js -->
+    <script src="/static/js/assets/js/custom-scripts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    {% block loadjs %} {% endblock %}
+    <!-- Bootstrap Styles-->
+    <link href="/static/js/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="/static/js/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="/static/js/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="/static/js/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">麻将识别</a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    {% if request.session.is_login %}
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>当前在线：{{ request.session.user_name }}</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    {% else %}
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>未登录</a>
+                        </li>
+                        <li><a href="login"><i class="fa fa-gear fa-fw"></i> 登录</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 不开放注册</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu" href="/dachuang"><i class="fa fa-dashboard"></i> 首页</a>
+                    </li>
+                    <li>
+                        <a href="/dachuang/introduction"><i class="fa fa-table"></i> 项目介绍</a>
+                    </li>
+                    <li>
+                        <a href="/dachuang/teacher"><i class="fa fa-qrcode"></i> 指导教师</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-desktop"></i> 小组成员<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/dachuang/wzy"> 王昭阳</a>
+                            </li>
+                            <li>
+                                <a href="/dachuang/dch"> 杜晨皓</a>
+                            </li>
+                            <li>
+                                <a href="/dachuang/pk"> 逄凯</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-bar-chart-o"></i> 还没想好<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href=""> 还没想好</a>
+                            </li>
+                            <li>
+                                <a href=""> 还没想好</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="/"><i class="fa fa-edit"></i> 返回主站 </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                    {% block content %} {% endblock %}
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- Bootstrap Js -->
+
+
+
+</body>
+
+</html>

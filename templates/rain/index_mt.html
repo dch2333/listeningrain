@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+            @font-face {
+                font-family: shoujin;
+                src: url('/static/font/shoujin.woff'),url('/static/font/shoujin.ttf');
+            }
+            div{
+                font-family: shoujin;
+                font-size: 30px;
+            }
+            h1{
+                font-family: shoujin;
+                font-size: 150px;
+                color: white;
+            }
+            a{
+                font-size: 20px;
+            }
+            a:hover{
+                color: white;
+            }
+        </style>
+    <style media="screen">
+        body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>  
+    <style>  
+        .one {  
+            margin: 0 auto;  
+            height: 400px;  
+            writing-mode: vertical-rl;/*从左向右 从右向左是 writing-mode: vertical-lr;*/  
+            writing-mode: tb-rl;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-lr；*/ 
+            font-family: shoujin;
+            font-size: 20px;
+        }
+    </style> 
+    <script src="/static/js/rainyday.min.js"></script>
+    <script>
+        function run() {
+            var image = document.getElementById('background');
+            image.onload = function() {
+                var engine = new RainyDay({
+                    image: this
+                });
+                engine.rain([ [0, 3, 10], [3, 3, 1] ], 100);
+            };
+            image.crossOrigin = 'anonymous';
+            image.src = '/static/images/mt.jpg';
+        }
+    </script>
+    <title>LISTENING RAIN</title>
+</head>
+<body onload="run();">
+    <div class="htmleaf-container">
+        <header class="htmleaf-header">
+            <!-- <nav style="opacity:0.5" class="navbar navbar-default" role="navigation">
+                <div class="container-fluid"> 
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="">听·雨</a></li>
+                            <li><a href="blog">博客系统</a></li>
+                            <li><a href="dachuang">我的大创</a></li>
+                            <li><a href="mycloud">专属云盘</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav> -->
+            <nav style="opacity:0.6;" class="navbar navbar-default" role="navigation">
+                <div class="container-fluid"> 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#example-navbar-collapse">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" style="font-size: 20px;" href="">听·雨</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="blog">博客系统</a></li>
+                            <li><a href="dachuang">我的大创</a></li>
+                            <li><a href="mycloud">专属云盘</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div>
+                <div class="one" style="width: 10%;float: left;top: 30%;color: white;">{{ content }}</div>
+                <div class="one" style="width: 10%;float: left;height: 100%;color: white;">{{ title }}</div>
+            </div>
+            <div class="htmleaf-links">
+            </div>
+        </header>
+    </div>
+    <img style="height: 100%;" id="background" src="" />
+</body>
+</html>

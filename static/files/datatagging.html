@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>麻将识别</title>
+    <link rel="stylesheet" href="css/semantic.css" media="screen" title="no title" charset="utf-8">
+    <style>
+    #body{background-color:#1b1c1d;}
+    </style>
+    <script>
+      var num = 1;
+      function lastimage()
+      {
+        if (num == 1)
+        {
+          alert('别尼玛翻了，已经是第一张了')
+        }
+        else
+        {
+          num -= 1
+        }
+        element=document.getElementById('img')
+        element.src="train/" + String(num) + ".jpg"
+      }
+      function nextimage()
+      {
+        if (num == 4349)
+        {
+          alert('别尼玛翻了，已经是最后一张了')
+        }
+        else
+        {
+          num += 1
+        }
+      	element=document.getElementById('img')
+        element.src="train/" + String(num) + ".jpg"
+      }
+      function savetag()
+      {
+        element=document.getElementById('tag').value
+        if (element != '')
+        {
+          alert('保存成功')
+        }
+        else
+        {
+          alert('请输入标签')
+        }
+      }
+    </script>
+  </head>
+  <body bgcolor="1b1c1d">
+        <div class="ui fixed inverted menu">
+          <div class='ui container'>
+            <a class="item" href="introduce.html">
+              <i class="home icon"></i>项目介绍
+            </a>
+            <div class="ui simple dropdown item">
+              <i class="github popup icon"></i>小组队员
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item"><i class="edit icon"></i>王昭阳</a>
+                <a class="item"><i class="globe icon"></i>杜晨皓</a>
+                <a class="item"><i class="settings icon"></i>逄凯</a>
+              </div>
+            </div>
+            <div class="ui simple dropdown item">
+              <i class="mail icon"></i>项目记录
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item"><i class="edit icon" href="datatagging.html"></i>数据标注</a>
+              </div>
+            </div>
+            <div class="right item">
+              <div class="ui input"><input type="text" placeholder="Search..."></div>
+            </div>
+          </div>
+        </div>
+        <div class="ui vertical inverted basic segment">
+            <div align=center>
+                <div class="ui image">
+                    <img src="banner.jpg" alt="" class="centered" / center>
+                </div>
+            </div>
+        </div>
+        <div class="ui raised very padded text container segment">
+          <h1 class="ui header">图片类别标注</h1>
+            <br/>
+            <img id="img" class="ui centered medium image" src="train/1.jpg">
+            <br/>
+            <h2 class="ui header"> 图片类别： </h2>
+            <br>
+            <div class="ui input">
+              <input id="tag" type="text">
+            </div>
+            <br>
+            <br>
+            <br>
+            <button type="button" onclick="lastimage()" name="button" class="ui button">上一张</button>
+            <button type="button" onclick="savetag()" name="button" class="ui button">保存标签</button>
+            <button type="button" onclick="nextimage()" name="button" class="ui button">下一张</button>
+          </div>
+        </div>
+        <!--
+        <div class="ui vertical very padded inverted segment">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <div class="ui vertical inverted text menu">
+                        <div class="item">
+                            <h3 class="ui inverted header">中国石油大学</h3>
+                        </div>
+
+                        <div class="item">
+                            Address : 青岛市黄岛区长江路66号
+                        </div>
+
+                        <div class="item">
+                            Tel : 不知道
+                        </div>
+
+                        <div class="item">
+                            Fax : 不知道
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+  </body>
+</html>
